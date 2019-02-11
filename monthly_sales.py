@@ -50,9 +50,9 @@ print("TOTAL MONTHLY SALES: $12,000.71")
 
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
-print("  1) Button-Down Shirt: $6,960.35")
-print("  2) Super Soft Hoodie: $1,875.00")
-print("  3) etc.")
+
+for d in top_sellers:
+    print(" " + str(d["rank"]) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
 
 print("-----------------------")
 print("VISUALIZING THE DATA...")
