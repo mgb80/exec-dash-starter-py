@@ -21,8 +21,13 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
-products_sold = []
-breakpoint()
+products_sold = csv_data["product"].unique()
+
+for names in products_sold:
+    print(names)
+
+
+#breakpoint()
 
 
 top_sellers = [
