@@ -1,7 +1,24 @@
 # monthly_sales.py
 
 # TODO: import some modules and packages here
+import os
+import pandas
 
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+
+sales = []
+csv_filename = "sales-201710.csv" #allow user to specify
+
+csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
+
+csv_data = pandas.read_csv(csv_filepath)
+
+print(list(csv_data.columns))
+#TODO: read csv file
+
+
+    
 # TODO: write some Python code here to produce the desired functionality...
 
 print("-----------------------")
