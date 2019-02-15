@@ -4,6 +4,7 @@
 import os
 import pandas
 import matplotlib.pyplot as plt
+import operator
 
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
@@ -41,17 +42,19 @@ top_sellers = []
 
 for names in unique_product_names:
     matchRow = csv_data[csv_data["product"]== names]
-    productMonthlySales = 100.00
+    #productMonthlySales = 100.00
+    productMonthlySales = matchRow["sales price"].sum()
     top_sellers.append({"name": names, "monthly_sales": productMonthlySales})
 
 
+top_sellers = sorted(top_sellers, key=operator.itemgetter("monthly_sales"), reverse = True)
 #breakpoint()
 
     
 # TODO: write some Python code here to produce the desired functionality...
 
 print("-----------------------")
-print("MONTH: March 2018")
+print("MONTH: Feb 2019")
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
@@ -65,7 +68,8 @@ print("TOP SELLING PRODUCTS:")
 
 rank = 1
 for d in top_sellers:
-    print( d["name"] + ": " + to_usd(d["monthly_sales"]))
+    print("  " + str(rank) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
+    rank = rank +1
 
 print("-----------------------")
 print("VISUALIZING THE DATA...")
@@ -85,8 +89,13 @@ for this in top_sellers:
     chart_products.append(this["name"])
     chart_sales.append(this["monthly_sales"])
 
-plt.bar(chart_products, chart_sales)
+chart_products.reverse()
+chart_sales.reverse()
+
+plt.barh(chart_products, chart_sales)
 plt.title(chart_title)
 plt.ylabel("Product")
 plt.xlabel("Monthly Sales (USD)")
+
+plt.tight_layout()
 plt.show()
