@@ -116,9 +116,14 @@ chart_title = ("Top Selling Products " + month + " " + str(year))
 chart_products = []
 chart_sales = []
 
+label = "num"
+
 for this in top_sellers:
     chart_products.append(this["name"])
     chart_sales.append(this["monthly_sales"])
+
+
+
 
 chart_products.reverse()
 chart_sales.reverse()
@@ -126,10 +131,30 @@ chart_sales.reverse()
 #########################################
 
 fig, ax = plt.subplots()
+
 usd_formatter = tick.FormatStrFormatter('$%1.0f')
+
 ax.xaxis.set_major_formatter(usd_formatter)
 
 
+
+
+
+
+
+
+
+for i, v in enumerate(chart_sales):
+    ax.text(v + 3, i + .25, str(v), color='blue', fontweight='bold')
+
+
+
+
+
+
+#ax.set_yticklabels("mothly_sales")
+
+#ax.set_xticklabels("hey")
 plt.barh(chart_products, chart_sales)
 plt.title(chart_title)
 plt.ylabel("Product")
