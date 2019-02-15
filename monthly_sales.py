@@ -24,18 +24,24 @@ monthly_total = csv_data["sales price"].sum()
 
 
 #Need to get info from csv instead of hardcoding...
-top_sellers = [
-    {"name": "Button Down Shirt", "monthly_sales": 6960.35},
-    {"name": "Super Soft Hoodie", "monthly_sales": 1875.00},
-    {"name": "Product 3", "monthly_sales": 2000.00},
-    {"name": "Product 4", "monthly_sales": 6000.00},
+#top_sellers = [
+#    {"name": "Button Down Shirt", "monthly_sales": 6960.35},
+#    {"name": "Super Soft Hoodie", "monthly_sales": 1875.00},
+#    {"name": "Product 3", "monthly_sales": 2000.00},
+#    {"name": "Product 4", "monthly_sales": 6000.00},
+#]
 
-]
+product_names = csv_data["product"]
 
-products_sold = csv_data["product"].unique()
+unique_product_names = product_names.unique()
 
-#for names in products_sold:
-#    print(names)
+unique_product_names = unique_product_names.tolist()
+
+top_sellers = []
+
+for names in unique_product_names:
+    productMonthlySales = 100.00
+    top_sellers.append({"name": names, "monthly_sales": productMonthlySales})
 
 
 #breakpoint()
@@ -68,12 +74,8 @@ print("VISUALIZING THE DATA...")
 
 #sample graph
 
-bar_graph = [
-    {"types": "Thriller", "viewers": 12345},
-    {"types": "Horror", "viewers": 8463},
-    {"types": "Comedy", "viewers": 1294},
-    {"types": "Romance", "viewers": 2398},
-]
+
+chart_title = "Top Selling Products (February 2019)"
 
 chart_products = []
 chart_sales = []
@@ -83,6 +85,7 @@ for this in top_sellers:
     chart_sales.append(this["monthly_sales"])
 
 plt.bar(chart_products, chart_sales)
+plt.title(chart_title)
 plt.ylabel("Product")
 plt.xlabel("Monthly Sales (USD)")
 plt.show()
