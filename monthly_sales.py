@@ -68,11 +68,20 @@ for names in unique_product_names:
 top_sellers = sorted(top_sellers, key=operator.itemgetter("monthly_sales"), reverse = True)
 #breakpoint()
 
+def find_month(month):
+    month_list={'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May',
+                '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', 
+                '11': 'November', '12': 'December',}
+    return month_list[month]
+
+month = find_month(csv_filename[-6:-4])
+year = int(csv_filename[6:10])
+
     
 # TODO: write some Python code here to produce the desired functionality...
 
 print("-----------------------")
-print("MONTH: Feb 2019")
+print("MONTH: ")
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
