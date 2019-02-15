@@ -6,6 +6,7 @@ import pandas
 import matplotlib.pyplot as plt
 import matplotlib.ticker as tick
 import operator
+import numpy
 
 
 def to_usd(my_price):
@@ -68,6 +69,8 @@ for names in unique_product_names:
 top_sellers = sorted(top_sellers, key=operator.itemgetter("monthly_sales"), reverse = True)
 #breakpoint()
 
+#used info from --https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/pandas_explore.py
+
 def find_month(month):
     month_list={'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May',
                 '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', 
@@ -77,11 +80,13 @@ def find_month(month):
 month = find_month(csv_filename[-6:-4])
 year = int(csv_filename[6:10])
 
+#print("month" + month)
+#print("year" + str(year))
     
 # TODO: write some Python code here to produce the desired functionality...
 
 print("-----------------------")
-print("MONTH: ")
+print("MONTH: " + month + str(year))
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
@@ -106,7 +111,7 @@ print("VISUALIZING THE DATA...")
 ##########################################
 
 
-chart_title = "Top Selling Products (February 2019)"
+chart_title = ("Top Selling Products " + month + " " + str(year))
 
 chart_products = []
 chart_sales = []
