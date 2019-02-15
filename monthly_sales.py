@@ -11,12 +11,30 @@ import operator
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
 
-#sales = []
-csv_filename = "sales-201710.csv" #allow user to specify
 
+message = "Please input the file name with .csv appended: "
+filename = input(message)
+#sales = []
+#sales-201710.csv
+   
+csv_filename = filename #allow user to specify
 csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
 
-csv_data = pandas.read_csv(csv_filepath)
+
+
+#checking if the file exists --https://stackabuse.com/python-check-if-a-file-or-directory-exists/
+
+#print(csv_filepath)
+#print(csv_data)
+
+if os.path.isfile(csv_filepath):
+    print("Proceeding with calculations...")
+    csv_data = pandas.read_csv(csv_filepath)
+else:
+    print("File does not exist! Exiting program...")
+    exit()
+
+
 
 #print(list(csv_data.columns))
 #TODO: read csv file
@@ -105,3 +123,10 @@ plt.xlabel("Monthly Sales (USD)")
 
 plt.tight_layout()
 plt.show()
+
+
+
+
+
+
+
