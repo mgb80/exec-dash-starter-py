@@ -4,7 +4,9 @@
 import os
 import pandas
 import matplotlib.pyplot as plt
+import matplotlib.ticker as tick
 import operator
+
 
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
@@ -33,9 +35,7 @@ monthly_total = csv_data["sales price"].sum()
 #]
 
 product_names = csv_data["product"]
-
 unique_product_names = product_names.unique()
-
 unique_product_names = unique_product_names.tolist()
 
 top_sellers = []
@@ -76,8 +76,7 @@ print("VISUALIZING THE DATA...")
 
 
 #GRAPHS TO BE INSERTED BELOW...
-
-#sample graph
+##########################################
 
 
 chart_title = "Top Selling Products (February 2019)"
@@ -91,6 +90,13 @@ for this in top_sellers:
 
 chart_products.reverse()
 chart_sales.reverse()
+
+#########################################
+
+fig, ax = plt.subplots()
+usd_formatter = tick.FormatStrFormatter('$%1.0f')
+ax.xaxis.set_major_formatter(usd_formatter)
+
 
 plt.barh(chart_products, chart_sales)
 plt.title(chart_title)
