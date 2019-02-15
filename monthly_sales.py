@@ -75,14 +75,14 @@ bar_graph = [
     {"types": "Romance", "viewers": 2398},
 ]
 
-types = []
-viewers = []
+chart_products = []
+chart_sales = []
 
-for this in bar_graph:
-    types.append(this["types"])
-    viewers.append(this["viewers"])
+for this in top_sellers:
+    chart_products.append(this["name"])
+    chart_sales.append(this["monthly_sales"])
 
-plt.bar(types, viewers)
-plt.ylabel("Viewers")
-plt.xlabel("Type")
+plt.bar(chart_products, chart_sales)
+plt.ylabel("Product")
+plt.xlabel("Monthly Sales (USD)")
 plt.show()
