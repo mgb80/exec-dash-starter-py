@@ -40,6 +40,7 @@ unique_product_names = unique_product_names.tolist()
 top_sellers = []
 
 for names in unique_product_names:
+    matchRow = csv_data[csv_data["product"]== names]
     productMonthlySales = 100.00
     top_sellers.append({"name": names, "monthly_sales": productMonthlySales})
 
