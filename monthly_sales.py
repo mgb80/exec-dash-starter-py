@@ -1,5 +1,7 @@
 # monthly_sales.py
 
+# orginal code adapted from 
+
 # TODO: import some modules and packages here
 import os
 import pandas
@@ -86,13 +88,13 @@ year = int(csv_filename[6:10])
 # TODO: write some Python code here to produce the desired functionality...
 
 print("-----------------------")
-print("MONTH: " + month + str(year))
+print("MONTH: " + month + " " + str(year))
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
 
 print("-----------------------")
-print("TOTAL MONTHLY SALES: $12,000.71")
+print(f"TOTAL MONTHLY SALES:  {to_usd(monthly_total)}")
 
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
@@ -141,11 +143,11 @@ ax.xaxis.set_major_formatter(usd_formatter)
 
 
 
-
-
+#labels adapted from 
+#https://stackoverflow.com/questions/30228069/how-to-display-the-value-of-the-bar-on-each-bar-with-pyplot-barh
 
 for i, v in enumerate(chart_sales):
-    ax.text(v + 3, i + .25, str(v), color='blue', fontweight='bold')
+    ax.text(v + 3, i + .25, str(to_usd(v)), color='blue', fontweight='normal')
 
 
 
@@ -167,5 +169,5 @@ plt.show()
 
 
 
-
+# sales-201803.csv
 
