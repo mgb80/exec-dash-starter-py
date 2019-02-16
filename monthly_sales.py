@@ -99,6 +99,9 @@ print(f"TOTAL MONTHLY SALES:  {to_usd(monthly_total)}")
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
 
+#adapated from start respository on github...
+#https://github.com/s2t2/exec-dash-starter-py/commits/master/monthly_sales_alt.py
+
 
 rank = 1
 for d in top_sellers:
