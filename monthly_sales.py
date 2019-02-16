@@ -143,17 +143,11 @@ ax.xaxis.set_major_formatter(usd_formatter)
 
 
 
-
-
-
 #labels adapted from 
 #https://stackoverflow.com/questions/30228069/how-to-display-the-value-of-the-bar-on-each-bar-with-pyplot-barh
 
 for i, v in enumerate(chart_sales):
     ax.text(v + 3, i + .25, str(to_usd(v)), color='blue', fontweight='normal')
-
-
-
 
 
 
@@ -168,9 +162,4 @@ plt.xlabel("Monthly Sales (USD)")
 plt.tight_layout()
 plt.show()
 
-
-
-
-
-# sales-201803.csv
 
